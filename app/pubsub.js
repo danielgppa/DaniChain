@@ -77,9 +77,7 @@ class PubSub {
   }
 
   publish({ channel, message }) {
-    this.pubnub.unsubscribeAll();
-    setTimeout(() => this.pubnub.publish({ channel, message }), 3000);
-    this.subscribeToChannels();
+    this.pubnub.publish({ message, channel });
   }
 
   broadcastChain() {
