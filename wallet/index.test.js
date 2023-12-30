@@ -42,10 +42,22 @@ describe('Wallet', () => {
     });
 
     describe('createTransaction()', () => {
-        describe('and the amount exceeds the balance', () => {
-            it('throws an error', () => {
-                expect(() => wallet.createTransaction({ amount: 999999, recipient: 'foo-recipient' }))
-                    .toThrow('Amount exceeds balance');
+
+        describe('and the amount exceeds the balance or zero or negative',()=>{
+
+            it('throws an error',()=>{
+                expect(()=>wallet.createTransaction({amount:999999,recipient:'any-recipient'}))
+                 .toThrow('Amount exceeds balance');
+            });
+
+            it('throws an error',()=>{
+                expect(()=>wallet.createTransaction({amount:0,recipient:'any-recipient'}))
+                 .toThrow('Amount can not be zero');
+            });
+
+            it('throws an error',()=>{
+                expect(()=>wallet.createTransaction({amount:-100,recipient:'any-recipient'}))
+                 .toThrow('Amount can not be negative');
             });
         });
 
