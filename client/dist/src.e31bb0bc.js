@@ -50498,12 +50498,30 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
         amount: Number(event.target.value)
       });
     });
+    _defineProperty(_assertThisInitialized(_this), "conductTransaction", function () {
+      var _this$state = _this.state,
+        recipient = _this$state.recipient,
+        amount = _this$state.amount;
+      fetch("".concat(document.location.origin, "/api/transact"), {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          recipient: recipient,
+          amount: amount
+        })
+      }).then(function (response) {
+        return response.json();
+      }).then(function (json) {
+        alert(json.message || json.type);
+      });
+    });
     return _this;
   }
   _createClass(ConductTransaction, [{
     key: "render",
     value: function render() {
-      console.log("this.state", this.state);
       return /*#__PURE__*/_react.default.createElement("div", {
         className: "ConductTransaction"
       }, /*#__PURE__*/_react.default.createElement(_reactRouterDom.Link, {
@@ -50518,7 +50536,10 @@ var ConductTransaction = /*#__PURE__*/function (_Component) {
         placeholder: "amount",
         value: this.state.amount,
         onChange: this.updateAmount
-      })));
+      })), /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement(_reactBootstrap.Button, {
+        bsStyle: "danger",
+        onClick: this.conductTransaction
+      }, "Submit")));
     }
   }]);
   return ConductTransaction;
@@ -50630,7 +50651,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56684" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60839" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
