@@ -39,6 +39,10 @@ body {
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.3);
 }
 
+.Transaction {
+    padding: 5%;
+}
+
 /* .button {
     background-color: #8EBBFF;
     color: #24293E;
