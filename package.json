@@ -11,6 +11,7 @@
     "dev": "npm-run-all --parallel dev-server dev-client",
     "dev-server": "nodemon index.js",
     "dev-client": "parcel client/src/index.html --out-dir client/dist",
+    "dev-peer": "cross-env GENERATE_PEER_PORT=true nodemon index.js",
     "clean": "rm -rf .cache client/dist"
   },
   "jest": {
